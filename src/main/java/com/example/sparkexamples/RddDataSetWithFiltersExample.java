@@ -16,6 +16,7 @@ import org.apache.spark.sql.SparkSession;
 
 public class RddDataSetWithFiltersExample {
     public static void main(String[] args) {
+        System.setProperty("hadoop.home.dir", System.getProperty("user.dir"));
         SparkSession spark = SparkSession.builder().appName("RddDataSetWithFiltersExample").master("local[*]")
                 .config("spark.driver.bindAddress", "localhost").getOrCreate();
         JavaRDD<String> lines = spark.read().textFile("src/main/resources/test.csv").javaRDD();

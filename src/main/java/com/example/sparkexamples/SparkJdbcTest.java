@@ -21,6 +21,7 @@ public class SparkJdbcTest {
     private static final String DB_URL = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false";
 
     public static void main(String[] args) throws SQLException {
+        System.setProperty("hadoop.home.dir", System.getProperty("user.dir"));
         // local[*] run on all cpu cores. local[2] means 2 cpu cores.
         SparkSession spark = SparkSession.builder().appName("SparkJdbcTest").master("local[*]")
                 .config("spark.driver.bindAddress", "localhost").getOrCreate();

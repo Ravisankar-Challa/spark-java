@@ -11,6 +11,7 @@ import org.apache.spark.sql.SparkSession;
 
 public class JoinTest {
     public static void main(String[] args) {
+        System.setProperty("hadoop.home.dir", System.getProperty("user.dir"));
         SparkSession spark = SparkSession.builder().appName("JoinTest").master("local[*]")
                 .config("spark.driver.bindAddress", "localhost").getOrCreate();
         Dataset<String> csvDataString = spark
@@ -63,7 +64,6 @@ public class JoinTest {
         System.out.println("Full outer join with out intersection #################");
         students.join(departments, col("dep_id").equalTo(col("depart_id")), "full_outer").where("dep_id is null or depart_id is null").show();
         spark.sql("select * from _students s full outer join _departments d on s.dep_id = d.depart_id where s.dep_id is null or d.depart_id is null").show();
-        
-        
+
     }
 }

@@ -6,6 +6,7 @@ import org.apache.spark.sql.SparkSession;
 
 public class SparkSqlDirectTestOnFile {
     public static void main(String[] args) {
+        System.setProperty("hadoop.home.dir", System.getProperty("user.dir"));
         // Read a json file with out using spark.read()
         SparkSession spark = SparkSession.builder()
                 .appName("SparkSqlDirectTestOnFile")

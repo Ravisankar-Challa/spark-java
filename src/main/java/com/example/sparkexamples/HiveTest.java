@@ -8,6 +8,7 @@ import org.apache.spark.sql.SparkSession;
 public class HiveTest {
 
     public static void main(String[] args) {
+        System.setProperty("hadoop.home.dir", System.getProperty("user.dir"));
         SparkSession spark = SparkSession.builder().appName("Java Spark Hive Example").master("local[*]")
                 .config("spark.driver.bindAddress", "localhost")
                 .config("hive.exec.scratchdir", "C:\\ProgramData\\tmp\\hive\\")

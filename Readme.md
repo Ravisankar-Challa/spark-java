@@ -107,4 +107,11 @@ df1.repartition(1).write.format('orc').mode('append').save("/tmp/MY_TABLE__SOME_
 spark.sql("msck repair table NAMESPACE.TABLE_NMAE")
 
 ```
-        
+
+show partitions HIVE_TABLE;
+describe formatted HIVE_TABLE;
+hive> LOAD DATA INPATH '/user/haduser/test_table.csv' INTO TABLE test_table;'
+./metatool -listFSRoot
+
+Correcting the NameNode location:
+$ /usr/lib/hive/bin/metatool -updateLocation hdfs://hadoop:8020 hdfs://localhost:8020        
